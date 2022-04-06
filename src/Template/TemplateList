@@ -1,0 +1,27 @@
+1. InputReader
+    - next(), nextInt(), nextLong()
+    - input2DMatrix()
+
+2. Array
+    - inputArray()
+    - printArray()
+
+3. 탐색
+    - BFS
+    - DFS
+    - 순열 , 중복선택순열
+    - 조합 , 중복선택조합
+
+5. Set
+    - DisjointSet : UnionFind
+
+6. 최소 비용 탐색
+    - Minimum Spanning Tree ( N-1개의 간선으로 모든 노드를 이은 트리 ) - kruskal
+    - Dijestra ( 시작노드에서 모든 노드까지 각각의 최단경로 )
+    - 이분탐색
+
+8. 정렬
+    - quick sort
+    - merge sort
+
+9. 중앙값구하기
