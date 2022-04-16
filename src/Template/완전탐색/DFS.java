@@ -1,4 +1,4 @@
-package Template.탐색;
+package Template.완전탐색;
 
 public class DFS {
     static int[] moveX = {0,0,1,-1};

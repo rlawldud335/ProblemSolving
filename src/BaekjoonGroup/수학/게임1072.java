@@ -1,9 +1,11 @@
-package Template;
+package BaekjoonGroup.수학;
 
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class Main {
+//https://www.acmicpc.net/problem/1072
+
+public class 게임1072 {
 
     public static void main(String[] args) throws Exception {
         InputReader in = new InputReader(System.in);
@@ -18,10 +20,20 @@ public class Main {
     static class Task {
         //전역변수
         public void solve(InputReader in, PrintWriter out) {
+            //지역변수
+            long X = in.nextLong(); //게임횟수
+            long Y = in.nextLong(); //이긴게임
 
+            double Z = Math.floor((double) (Y * 100) / X); //승률
+
+            if (Z >= 99) {
+                out.println(-1);
+            } else {
+                long ans = (long) Math.ceil(((100 * Y) - X - (X * Z)) / (Z - 99));
+                out.println(ans);
+            }
         }
     }
-
 
     static class InputReader {
         public BufferedReader reader;

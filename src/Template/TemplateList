@@ -6,22 +6,42 @@
     - inputArray()
     - printArray()
 
-3. 탐색
+3. 완전탐색
     - BFS
     - DFS
     - 순열 , 중복선택순열
     - 조합 , 중복선택조합
 
-5. Set
-    - DisjointSet : UnionFind
+5. 집합
+    - UnionFind ( Disjoint 집합의 Union, Find 연산 )
 
 6. 최소 비용 탐색
-    - Minimum Spanning Tree ( N-1개의 간선으로 모든 노드를 이은 트리 ) - kruskal
-    - Dijestra ( 시작노드에서 모든 노드까지 각각의 최단경로 )
-    - 이분탐색
+    - Kruskal ( Minimum Spanning Tree : 최소비용으로 모든 노드를 연결하는 트리 )
+    - Dijkstra ( 시작노드에서 모든노드까지 각각의 최단경로 구하기 )
+    - Floyd-Warshall ( 모든노드에서 모든노드까지 각각의 최단경로 구하기 )
+    - Bellman-Ford ( 한 노드에서 다른노드까지 최단거리를 구하는 데 음수가중치 사용가능 )
+    - Binary-Search ( 정렬된 자료에서 중간값을 기준으로 탐색하는 방법 )
 
 8. 정렬
     - quick sort
     - merge sort
 
 9. 중앙값구하기
+    - min,max heap
+
+10. 해시
+    - map
+    - set
+
+11. 소수 찾기
+    - 에라토스테네스의 체
+
+12. 최장 증가 부분 수열(LIS)
+
+13. 최소 공통 조상(LCA)
+
+14. BaekjoonStudyGroup
+
+15. 세그먼트 트리
+
+16. kmp 문자열비교

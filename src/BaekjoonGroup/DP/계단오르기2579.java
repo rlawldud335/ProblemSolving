@@ -1,24 +1,39 @@
-package Template;
+package BaekjoonGroup.DP;
 
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class Main {
+// https://www.acmicpc.net/problem/2579
 
-    public static void main(String[] args) throws Exception {
+public class 계단오르기2579 {
+
+    public static void main(String[] args) {
         InputReader in = new InputReader(System.in);
         PrintWriter out = new PrintWriter(System.out);
-//        InputReader in = new InputReader(new FileInputStream("input.txt"));
-//        PrintWriter out = new PrintWriter(new BufferedOutputStream(new FileOutputStream("output.txt")));
         Task solver = new Task();
         solver.solve(in, out);
         out.close();
     }
 
     static class Task {
-        //전역변수
-        public void solve(InputReader in, PrintWriter out) {
+        int N;
+        int[] stair = new int[300];
+        int[] dp = new int[300];
 
+        public void solve(InputReader in, PrintWriter out) {
+            N = in.nextInt();
+            for (int i=0;i<N;i++){
+                stair[i] = in.nextInt();
+            }
+            dp[0] = stair[0];
+            dp[1] = Math.max(stair[0]+stair[1],stair[1]);
+            dp[2] = Math.max(stair[0]+stair[2],stair[1]+stair[2]);
+
+            for (int i = 3; i < N; i++) {
+                dp[i] = Math.max(dp[i-2]+stair[i], stair[i-1]+stair[i]+dp[i-3]);
+            }
+
+            out.println(dp[N-1]);
         }
     }
 

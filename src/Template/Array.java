@@ -42,7 +42,7 @@ public class Array {
         System.out.println("]");
     }
 
-    void printArray(int[][] matrix){
+    public static void printArray(int[][] matrix){
         int L = matrix.length;
         for (int i=0;i<L;i++){
             int LL = matrix[i].length;

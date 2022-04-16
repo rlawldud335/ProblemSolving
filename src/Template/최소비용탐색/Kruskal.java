@@ -2,10 +2,7 @@ package Template.최소비용탐색;
 
 import Template.InputReader;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.PriorityQueue;
-import java.util.StringTokenizer;
 
 public class Kruskal {
 
@@ -13,7 +10,7 @@ public class Kruskal {
     static PriorityQueue<Edge> pq = new PriorityQueue<>();
     static int[] uf;
 
-    public Kruskal(InputReader ir) {
+    public static void initData(InputReader ir) {
         V = ir.nextInt();
         E = ir.nextInt();
         for(int i=0; i<E; i++){
@@ -24,7 +21,7 @@ public class Kruskal {
         }
     }
 
-    public void kruskal(){
+    public static void kruskal(){
         makeSet();
         int cnt = 0;
         int sum =0;
@@ -38,14 +35,14 @@ public class Kruskal {
         System.out.println(sum);
     }
 
-    private void makeSet() {
+    private static void makeSet() {
         uf = new int[V+1];
         for(int i=0; i<=V; i++){
             uf[i]=i;
         }
     }
 
-    private int find(int x){
+    private static int find(int x){
         if(uf[x]==x){
             return x;
         }else{
@@ -53,7 +50,7 @@ public class Kruskal {
             return uf[x] = find(uf[x]);
         }
     }
-    private boolean union(int x, int y){
+    private static boolean union(int x, int y){
         x = find(x);
         y = find(y);
         if(x==y){

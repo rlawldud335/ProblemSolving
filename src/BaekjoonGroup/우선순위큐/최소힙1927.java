@@ -1,9 +1,11 @@
-package Template;
+package BaekjoonGroup.우선순위큐;
 
 import java.io.*;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-public class Main {
+// https://www.acmicpc.net/problem/1927
+public class 최소힙1927 {
 
     public static void main(String[] args) throws Exception {
         InputReader in = new InputReader(System.in);
@@ -18,7 +20,19 @@ public class Main {
     static class Task {
         //전역변수
         public void solve(InputReader in, PrintWriter out) {
-
+            //지역변수
+            PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+            int N = in.nextInt();
+            for (int i=0;i<N;i++){
+                int t = in.nextInt();
+                if (t==0&&minHeap.isEmpty()){
+                    out.println(0);
+                }else if (t==0){
+                    out.println(minHeap.poll());
+                }else{
+                    minHeap.add(t);
+                }
+            }
         }
     }
 

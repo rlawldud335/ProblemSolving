@@ -1,15 +1,13 @@
-package Template;
+package BaekjoonGroup.재귀;
 
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class Main {
+public class 접두사1992 {
 
     public static void main(String[] args) throws Exception {
         InputReader in = new InputReader(System.in);
         PrintWriter out = new PrintWriter(System.out);
-//        InputReader in = new InputReader(new FileInputStream("input.txt"));
-//        PrintWriter out = new PrintWriter(new BufferedOutputStream(new FileOutputStream("output.txt")));
         Task solver = new Task();
         solver.solve(in, out);
         out.close();
@@ -17,8 +15,40 @@ public class Main {
 
     static class Task {
         //전역변수
+        int N;
+        int[][] map;
         public void solve(InputReader in, PrintWriter out) {
+            //지역변수
+            N = in.nextInt();
+            map = new int[N][N];
 
+            for (int i=0;i<N;i++){
+                String t = in.next();
+                for (int j=0;j<N;j++){
+                    map[i][j] = t.charAt(j)-'0';
+                }
+            }
+
+            out.println(compression(0,0,N));
+        }
+
+        private String compression(int r, int c, int n){
+            int sum=0;
+            for (int i=r; i<r+n; i++){
+                for (int j=c; j<c+n; j++){
+                    sum += map[i][j];
+                }
+            }
+            if (sum==0){return "0";}
+            if (sum==n*n){return "1";}
+
+            String res ="(";
+            res += compression(r,c,n/2);
+            res += compression(r,c+n/2, n/2);
+            res += compression(r+n/2, c, n/2);
+            res += compression(r+n/2, c+n/2,n/2);
+            res += ")";
+            return res;
         }
     }
 

@@ -1,4 +1,4 @@
-package Template.탐색;
+package Template.완전탐색;
 
 import java.util.LinkedList;
 
