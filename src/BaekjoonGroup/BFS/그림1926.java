@@ -1,9 +1,11 @@
-package BaekjoonGroup.정렬;
+package BaekjoonGroup.BFS;
 
 import java.io.*;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main {
+public class 그림1926 {
 
     public static void main(String[] args) throws Exception {
         InputReader in = new InputReader(System.in);
@@ -16,62 +18,65 @@ public class Main {
     }
 
     static class Task {
-
+        //전역변수
+        int N,M;
+        int[][] map ;
+        int[] moveRow = {-1,0,1,0};
+        int[] moveCol = {0,1,0,-1};
+        int cnt = 0;
+        int max = 0;
         public void solve(InputReader in, PrintWriter out) {
-            int N = in.nextInt();
-            String[] input = new String[N];
-            int ans = N;
+            N = in.nextInt();
+            M = in.nextInt();
+            map = new int[N][M];
+            for (int i=0;i<N;i++){
+                for (int j=0;j<M;j++){
+                    map[i][j] = in.nextInt();
+                }
+            }
 
             for (int i=0;i<N;i++){
-                input[i] = in.next();
-            }
-
-            for (int i=0;i<N;i++){
-                for (int j=0; j<N; j++){
-                    if (StringCompare(input[i],input[j])>0){
-                        String tmp= input[j];
-                        input[j]=input[i];
-                        input[i]=tmp;
+                for (int j=0;j<M;j++){
+                    if (map[i][j]==1){
+                        cnt++;
+                        int sum = BFS(i,j);
+                        if (max<sum){max = sum;}
                     }
                 }
             }
+            out.print(cnt+"\n"+max);
+        }
 
-            for (int i=0;i<N; i++){
-                for (int j=i+1;j<N;j++){
-                    if (prefix(input[i],input[j])){
-                        ans--;
-                        break;
+        private int BFS(int r, int c){
+            Queue<Node> q = new LinkedList<>();
+            q.add(new Node(r,c));
+            int sum = 0;
+            while(!q.isEmpty()){
+                Node cur = q.poll();
+                //방문을 안했으면?
+                if (map[cur.row][cur.col]==1){
+                    sum++;
+                    map[cur.row][cur.col] =0;
+                    for (int i=0;i<4; i++){
+                        int nr = cur.row + moveRow[i];
+                        int nc = cur.col + moveCol[i];
+                        if (0<=nr&&nr<N&&0<=nc&&nc<M&&map[nr][nc]==1){
+                            q.add(new Node(nr,nc));
+                        }
                     }
                 }
             }
-            out.println(ans);
+            return sum;
         }
+    }
 
-
-        private boolean prefix(String a, String b){
-            for (int i=0;i<a.length();i++){
-                if (a.charAt(i)!=b.charAt(i)){
-                    return false;
-                }
-            }
-            return true;
+    static class Node{
+        int row, col;
+        public Node(int row, int col) {
+            this.row = row;
+            this.col = col;
         }
-
-        private int StringCompare(String a, String b){
-            if (a.length()!=b.length()){
-                return b.length()-a.length();
-            } else{
-                int l = Math.min(a.length(),b.length());
-                for (int i=0;i<l;i++){
-                    if (a.charAt(i)!=b.charAt(i)){
-                        return b.charAt(i)-a.charAt(i);
-                    }
-                }
-                return 0;
-            }
-        }
-   }
-
+    }
 
     static class InputReader {
         public BufferedReader reader;

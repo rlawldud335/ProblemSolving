@@ -1,13 +1,15 @@
-package BaekjoonGroup.재귀;
+package 카카오인턴코테;
 
 import java.io.*;
-import java.util.StringTokenizer;
+import java.util.*;
 
-public class 접두사1992 {
+public class 크레인인형뽑기 {
 
     public static void main(String[] args) throws Exception {
         InputReader in = new InputReader(System.in);
         PrintWriter out = new PrintWriter(System.out);
+//        InputReader in = new InputReader(new FileInputStream("input.txt"));
+//        PrintWriter out = new PrintWriter(new BufferedOutputStream(new FileOutputStream("output.txt")));
         Task solver = new Task();
         solver.solve(in, out);
         out.close();
@@ -15,43 +17,34 @@ public class 접두사1992 {
 
     static class Task {
         //전역변수
-        int N;
-        int[][] map;
+        static int answer = 0;
         public void solve(InputReader in, PrintWriter out) {
-            //지역변수
-            N = in.nextInt();
-            map = new int[N][N];
+            int[][] board = {{0,0,0,0,0},{0,0,1,0,3},{0,2,5,0,1},{4,2,4,4,2},{3,5,1,3,1}};
+            int[] moves = {1,5,3,5,1,2,1,4};
 
-            for (int i=0;i<N;i++){
-                String t = in.next();
-                for (int j=0;j<N;j++){
-                    map[i][j] = t.charAt(j)-'0';
+            Bucket bucket = new Bucket();
+
+            for (int i=0;i<moves.length;i++){
+                int c = moves[i]-1;
+                int r = 0;
+                while(0<=r&&r<board.length&&board[r][c]==0){r++;}
+                if (0<=r&&r<board.length&&board[r][c]!=0){
+                    bucket.push(board[r][c]);
+                    board[r][c]=0;
                 }
             }
-
-            out.println(compression(0,0,N));
+            out.println(answer);
         }
 
-        private String compression(int r, int c, int n){
-            int sum=0;
-            for (int i=r; i<r+n; i++){
-                for (int j=c; j<c+n; j++){
-                    sum += map[i][j];
-                }
+        static class Bucket{
+            Stack<Integer> stk = new Stack<>();
+            public void push(Integer temp){
+                if (stk.isEmpty()){stk.push(temp);}
+                else if (stk.peek().equals(temp)) { stk.pop(); answer+=2; }
+                else{ stk.push(temp); }
             }
-            if (sum==0){return "0";}
-            if (sum==n*n){return "1";}
-
-            String res ="(";
-            res += compression(r,c,n/2);
-            res += compression(r,c+n/2, n/2);
-            res += compression(r+n/2, c, n/2);
-            res += compression(r+n/2, c+n/2,n/2);
-            res += ")";
-            return res;
         }
     }
-
 
     static class InputReader {
         public BufferedReader reader;
