@@ -1,4 +1,4 @@
-package 카카오인턴코테;
+package 카카오인턴코테.레벨2;
 
 import java.util.Stack;
 class 괄호변환{

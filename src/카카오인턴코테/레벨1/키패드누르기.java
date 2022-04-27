@@ -1,4 +1,4 @@
-package 카카오인턴코테;
+package 카카오인턴코테.레벨1;
 
 import java.io.*;
 import java.util.ArrayList;
