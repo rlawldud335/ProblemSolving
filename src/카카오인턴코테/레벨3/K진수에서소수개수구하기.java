@@ -7,7 +7,7 @@ public class K진수에서소수개수구하기 {
         public int solution(int n, int k) {
             StringBuilder sb = new StringBuilder();
             int temp = n;
-            while(temp>k){
+            while(temp>=k){
                 sb.insert(0,temp%k);
                 temp = temp/k;
             }
@@ -40,7 +40,7 @@ public class K진수에서소수개수구하기 {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        int cnt = s.solution(110011,10);
+        int cnt = s.solution(3,3);
         System.out.println(cnt);
     }
 }
