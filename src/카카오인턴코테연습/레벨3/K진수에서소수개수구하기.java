@@ -1,4 +1,4 @@
-package 카카오인턴코테.레벨3;
+package 카카오인턴코테연습.레벨3;
 
 
 public class K진수에서소수개수구하기 {

@@ -1,6 +1,4 @@
-package 카카오인턴코테.레벨3;
-
-import java.util.*;
+package 카카오인턴코테연습.레벨3;
 
 public class 표편집 {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package 카카오인턴코테.레벨2;
+package 카카오인턴코테연습.레벨2;
 
 import java.util.Arrays;
 

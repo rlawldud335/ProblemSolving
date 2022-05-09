@@ -1,4 +1,4 @@
-package 카카오인턴코테.레벨2;
+package 카카오인턴코테연습.레벨2;
 
 public class _124나라의숫자 {
     static class Solution {

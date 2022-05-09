@@ -1,4 +1,4 @@
-package 카카오인턴코테.레벨1;
+package 카카오인턴코테연습.레벨1;
 
 public class 신규아이디추천 {
     static class Solution {
